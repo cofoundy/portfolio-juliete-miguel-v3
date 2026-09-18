@@ -49,14 +49,6 @@ html.js-motion .card.m-settled .card-media{transition-delay:0ms}
 html.js-motion .cat-head .rule{transform-origin:left center;transition:transform 1.6s var(--m-expo) 200ms}
 html.js-motion .cat-head:not(.m-in) .rule{transform:scaleX(0)}
 
-/* Índice Economy: las filas entran en cascada */
-html.js-motion .index .index-row{transition:opacity .8s var(--m-expo),transform 1s var(--m-expo)}
-html.js-motion .index:not(.m-in) .index-row{opacity:0;transform:translate3d(0,8px,0)}
-html.js-motion .index .index-row:nth-child(n){transition-delay:calc(var(--i,0) * 55ms + 120ms)}
-.index-row:nth-child(2){--i:1}.index-row:nth-child(3){--i:2}.index-row:nth-child(4){--i:3}.index-row:nth-child(5){--i:4}
-.index-row:nth-child(6){--i:5}.index-row:nth-child(7){--i:6}.index-row:nth-child(8){--i:7}.index-row:nth-child(9){--i:8}.index-row:nth-child(10){--i:9}
-html.js-motion .index.m-settled .index-row{transition-delay:0ms}
-
 /* Cifras: el filo naranja se traza */
 html.js-motion .figure{position:relative;border-left-color:transparent}
 html.js-motion .figure::before{content:"";position:absolute;left:-1px;top:0;bottom:0;width:1px;background:var(--orange,#ec6607);

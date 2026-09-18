@@ -69,7 +69,6 @@ strong{font-weight:600;color:var(--navy)}
 .plane--navy{background:var(--navy);color:#fff}
 .plane--joined{padding-top:0}
 .plane--joined > .wrap{position:relative;padding-top:clamp(4.5rem,9vw,7.5rem)}
-@media (max-width:760px){ .plane--joined > .wrap::before{display:none} }
 .plane--joined > .wrap::before{content:"";position:absolute;top:0;left:var(--gutter);right:var(--gutter);height:1px;background:rgba(32,60,106,.22)}
 
 .h2{font-family:var(--serif);font-weight:400;color:var(--navy);font-size:clamp(2rem,4.2vw,3.25rem);line-height:1.12;letter-spacing:-.012em;text-wrap:balance}
@@ -217,31 +216,10 @@ strong{font-weight:600;color:var(--navy)}
 .card-facts{margin-top:.3rem;font-size:.875rem;color:var(--muted)}
 .card-desc{margin-top:.9rem;font-size:.9375rem;line-height:1.6;color:var(--text)}
 
-/* Economy & Budget: índice tipográfico, sin fotografías */
-.index{border-top:1px solid rgba(32,60,106,.3)}
-.index-row{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(0,1.3fr) minmax(0,1.5fr) 6.5rem 7rem;gap:1.5rem;align-items:baseline;
-  padding:1.05rem 0;border-bottom:1px solid var(--line);transition:background .3s}
-.index-row--head{padding:.8rem 0;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.index-row:not(.index-row--head):hover{background:rgba(255,255,255,.55)}
-.ix-name{font-family:var(--serif);font-size:1.125rem;line-height:1.3;color:var(--navy)}
-.ix-brand{font-size:.8125rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--copper-deep)}
-.ix-city,.ix-rooms,.ix-years{font-size:.9375rem;color:var(--text);font-variant-numeric:tabular-nums}
-.ix-rooms,.ix-years{text-align:right;white-space:nowrap}
-.index-row--head span{font-size:.75rem;color:var(--muted);letter-spacing:.14em}
-
 @media (max-width:1023px){
   .card,.card--wide{grid-column:span 3}
   .grid6 > .card:last-child:nth-child(odd){grid-column:span 6}
   .grid6 > .card:last-child:nth-child(odd) .card-media{aspect-ratio:16/8}
-}
-@media (max-width:760px){
-  .index-row--head{display:none}
-  .index-row{grid-template-columns:1fr auto;gap:.2rem 1rem;padding:1rem 0}
-  .ix-name{grid-column:1/-1}
-  .ix-brand{grid-column:1}
-  .ix-years{grid-column:2;grid-row:2}
-  .ix-city{grid-column:1}
-  .ix-rooms{grid-column:2;grid-row:3}
 }
 @media (max-width:639px){
   .card,.card--wide,.grid6 > .card:last-child:nth-child(odd){grid-column:1/-1}
@@ -542,18 +520,80 @@ strong{font-weight:600;color:var(--navy)}
 
       <div class="pf-cat">
         <div class="cat-head reveal"><h3 class="label">Economy &amp; Budget</h3><span class="rule" aria-hidden="true"></span><span class="count">9 proyectos</span></div>
-        <ol class="index reveal" aria-label="Proyectos Economy y Budget">
-          <li class="index-row index-row--head" aria-hidden="true"><span class="ix-name-h">Hotel</span><span>Cadena · categoría</span><span>Ciudad</span><span class="ix-rooms">Habitaciones</span><span class="ix-years">Años</span></li>
-          <li class="index-row"><span class="ix-name">Ibis Styles Lima San Isidro</span><span class="ix-brand">Accor · Economy</span><span class="ix-city">Lima, Perú</span><span class="ix-rooms">184 hab</span><span class="ix-years">2019–2021</span></li>
-          <li class="index-row"><span class="ix-name">Ibis Budget Lima Miraflores</span><span class="ix-brand">Accor · Budget</span><span class="ix-city">Lima, Perú</span><span class="ix-rooms">162 hab</span><span class="ix-years">2018–2020</span></li>
-          <li class="index-row"><span class="ix-name">Ibis Budget Barranquilla</span><span class="ix-brand">Accor · Budget</span><span class="ix-city">Barranquilla, Colombia</span><span class="ix-rooms">154 hab</span><span class="ix-years">2017–2020</span></li>
-          <li class="index-row"><span class="ix-name">Ibis Styles Benavides</span><span class="ix-brand">Accor · Economy</span><span class="ix-city">Lima, Perú</span><span class="ix-rooms">99 hab</span><span class="ix-years">2017–2020</span></li>
-          <li class="index-row"><span class="ix-name">Ibis Trujillo</span><span class="ix-brand">Accor · Economy</span><span class="ix-city">Trujillo, Perú</span><span class="ix-rooms">112 hab</span><span class="ix-years">2017–2019</span></li>
-          <li class="index-row"><span class="ix-name">Ibis Styles Conquistadores</span><span class="ix-brand">Accor · Economy</span><span class="ix-city">Lima, Perú</span><span class="ix-rooms">60 hab</span><span class="ix-years">2016–2017</span></li>
-          <li class="index-row"><span class="ix-name">Ibis Quito</span><span class="ix-brand">Accor · Economy</span><span class="ix-city">Quito, Ecuador</span><span class="ix-rooms">151 hab</span><span class="ix-years">2014–2018</span></li>
-          <li class="index-row"><span class="ix-name">Ibis Reducto Miraflores</span><span class="ix-brand">Accor · Economy</span><span class="ix-city">Lima, Perú</span><span class="ix-rooms">154 hab</span><span class="ix-years">2013–2016</span></li>
-          <li class="index-row"><span class="ix-name">Ibis Lima Larco Miraflores</span><span class="ix-brand">Accor · Economy</span><span class="ix-city">Lima, Perú</span><span class="ix-rooms">247 hab</span><span class="ix-years">2009–2011</span></li>
-        </ol>
+        <div class="grid6">
+          <article class="card reveal">
+            <figure class="card-media"><img src="images/eco-styles-sanisidro.jpg" alt="Ibis Styles Lima San Isidro" loading="lazy" width="1200" height="900"></figure>
+            <div class="card-body">
+              <h4>Ibis Styles Lima San Isidro</h4>
+              <p class="card-meta">Accor · Economy · <span class="nw">2019–2021</span></p>
+              <p class="card-facts">184 habitaciones · Lima, Perú</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <figure class="card-media"><img src="images/eco-budget-lima.jpg" alt="Ibis Budget Lima Miraflores" loading="lazy" width="1200" height="900"></figure>
+            <div class="card-body">
+              <h4>Ibis Budget Lima Miraflores</h4>
+              <p class="card-meta">Accor · Budget · <span class="nw">2018–2020</span></p>
+              <p class="card-facts">162 habitaciones · Lima, Perú</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <figure class="card-media"><img src="images/eco-budget-barranquilla.jpg" alt="Ibis Budget Barranquilla" loading="lazy" width="1200" height="900"></figure>
+            <div class="card-body">
+              <h4>Ibis Budget Barranquilla</h4>
+              <p class="card-meta">Accor · Budget · <span class="nw">2017–2020</span></p>
+              <p class="card-facts">154 habitaciones · Barranquilla, Colombia</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <figure class="card-media"><img src="images/eco-styles-benavides.jpg" alt="Ibis Styles Benavides" loading="lazy" width="1200" height="900"></figure>
+            <div class="card-body">
+              <h4>Ibis Styles Benavides</h4>
+              <p class="card-meta">Accor · Economy · <span class="nw">2017–2020</span></p>
+              <p class="card-facts">99 habitaciones · Lima, Perú</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <figure class="card-media"><img src="images/eco-trujillo.jpg" alt="Ibis Trujillo" loading="lazy" width="1200" height="900"></figure>
+            <div class="card-body">
+              <h4>Ibis Trujillo</h4>
+              <p class="card-meta">Accor · Economy · <span class="nw">2017–2019</span></p>
+              <p class="card-facts">112 habitaciones · Trujillo, Perú</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <figure class="card-media"><img src="images/ibis-styles-conquistadores.jpg" alt="Ibis Styles Conquistadores" loading="lazy" width="1200" height="900"></figure>
+            <div class="card-body">
+              <h4>Ibis Styles Conquistadores</h4>
+              <p class="card-meta">Accor · Economy · <span class="nw">2016–2017</span></p>
+              <p class="card-facts">60 habitaciones · Lima, Perú</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <figure class="card-media"><img src="images/ibis-quito.jpg" alt="Ibis Quito" loading="lazy" width="1200" height="900"></figure>
+            <div class="card-body">
+              <h4>Ibis Quito</h4>
+              <p class="card-meta">Accor · Economy · <span class="nw">2014–2018</span></p>
+              <p class="card-facts">151 habitaciones · Quito, Ecuador</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <figure class="card-media"><img src="images/eco-reducto.jpg" alt="Ibis Reducto Miraflores" loading="lazy" width="1200" height="900"></figure>
+            <div class="card-body">
+              <h4>Ibis Reducto Miraflores</h4>
+              <p class="card-meta">Accor · Economy · <span class="nw">2013–2016</span></p>
+              <p class="card-facts">154 habitaciones · Lima, Perú</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <figure class="card-media"><img src="images/ibis-larco.jpg" alt="Ibis Lima Larco Miraflores" loading="lazy" width="1200" height="900"></figure>
+            <div class="card-body">
+              <h4>Ibis Lima Larco Miraflores</h4>
+              <p class="card-meta">Accor · Economy · <span class="nw">2009–2011</span></p>
+              <p class="card-facts">247 habitaciones · Lima, Perú</p>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
