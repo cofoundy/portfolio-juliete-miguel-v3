@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="images/hero-bg.jpg">
+<link rel="preload" as="image" href="images/hero-nhow.jpg">
 <style>
 /* ==========================================================================
    JUMP Arquitectura & Consultoría — hoja propia (sin framework)
@@ -129,8 +129,8 @@ strong{font-weight:600;color:var(--navy)}
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:grid;place-items:center;overflow:hidden;background:#15120f}
 .hero-media{position:absolute;inset:0}
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:70% 50%}
-@media (max-width:760px){ .hero-media img{object-position:62% 50%} }
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:70% 50%;filter:saturate(.8) contrast(1.04)}
+@media (max-width:760px){ .hero-media img{object-position:58% 50%} }
 /* Velo neutro y cálido: oscurece sin teñir. Un halo tenue detrás de la marca. */
 .hero-veil{position:absolute;inset:0;
   background:
@@ -138,7 +138,7 @@ strong{font-weight:600;color:var(--navy)}
     radial-gradient(ellipse 40% 42% at 50% 54%,rgba(16,12,9,.70),rgba(16,12,9,0) 70%),
     radial-gradient(55% 42% at 50% 52%,rgba(16,12,9,.32),rgba(16,12,9,0) 72%),
     linear-gradient(180deg,rgba(16,12,9,.7) 0%,rgba(16,12,9,.56) 40%,rgba(16,12,9,.62) 100%)}
-@media (max-width:760px){ .hero-veil{background:radial-gradient(ellipse 64% 26% at 50% 55%,rgba(16,12,9,.45),rgba(16,12,9,0) 72%),radial-gradient(ellipse 85% 34% at 50% 55%,rgba(16,12,9,.70),rgba(16,12,9,0) 72%),linear-gradient(180deg,rgba(16,12,9,.7) 0%,rgba(16,12,9,.56) 40%,rgba(16,12,9,.62) 100%)} }
+@media (max-width:760px){ .hero-veil{background:radial-gradient(ellipse 64% 26% at 50% 55%,rgba(16,12,9,.45),rgba(16,12,9,0) 72%),radial-gradient(ellipse 85% 34% at 50% 55%,rgba(16,12,9,.78),rgba(16,12,9,0) 72%),linear-gradient(180deg,rgba(16,12,9,.72) 0%,rgba(16,12,9,.56) 40%,rgba(16,12,9,.62) 100%)} }
 .hero-lockup{position:relative;z-index:2;margin-top:9vh;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 var(--gutter)}
 .hero-logo{width:min(400px,62vw);height:auto;filter:drop-shadow(0 2px 12px rgba(0,0,0,.35))}
 .hero-descriptor{margin-top:1.1rem;font-size:clamp(.75rem,1.15vw,.9375rem);font-weight:500;text-shadow:0 1px 10px rgba(0,0,0,.45);letter-spacing:.34em;text-transform:uppercase;
@@ -297,6 +297,7 @@ strong{font-weight:600;color:var(--navy)}
   .figure{padding-left:1rem}
   .contact-actions .btn{width:100%;max-width:22rem}
 }
+  .card img[src*="card-nhow"]{object-position:12% 50%}
 </style>
 <link rel="stylesheet" href="_astro/motion.css">
 <script src="_astro/motion.js" defer></script>
@@ -348,7 +349,7 @@ strong{font-weight:600;color:var(--navy)}
   <!-- Hero: la marca sola sobre la fotografía (referencia frankarchitecture.ca) -->
   <section id="hero" class="hero">
     <div class="hero-media">
-      <img src="images/hero-bg.jpg" alt="" width="1920" height="1023" fetchpriority="high" decoding="async">
+      <img src="images/hero-nhow.jpg" alt="" width="1920" height="1279" fetchpriority="high" decoding="async">
       <div class="hero-veil"></div>
     </div>
     <h1 class="sr-only">JUMP Arquitectura &amp; Consultoría — Juliete Miguel Pacheco, arquitectura hotelera en LATAM</h1>
@@ -438,7 +439,7 @@ strong{font-weight:600;color:var(--navy)}
         <div class="cat-head reveal"><h3 class="label">Luxury &amp; Upscale</h3><span class="rule" aria-hidden="true"></span><span class="count">5 proyectos</span></div>
         <div class="grid6">
           <article class="card card--wide reveal">
-            <figure class="card-media"><img src="images/nhow-bar.jpg" alt="nhow Lima Hotel, bar del lobby" loading="lazy" width="800" height="599"><span class="badge">En curso</span></figure>
+            <figure class="card-media"><img src="images/card-nhow.jpg" alt="nhow Lima Hotel, bar del lobby" loading="lazy" width="1200" height="673"><span class="badge">En curso</span></figure>
             <div class="card-body">
               <h4>nhow Lima Hotel</h4>
               <p class="card-meta">NH Hotel Group · Luxury · <span class="nw">2022–2025</span></p>
@@ -447,7 +448,7 @@ strong{font-weight:600;color:var(--navy)}
             </div>
           </article>
           <article class="card card--wide reveal">
-            <figure class="card-media"><img src="images/pullman-bar.jpg" alt="Pullman Lima San Isidro" loading="lazy"></figure>
+            <figure class="card-media"><img src="images/card-pullman-sanisidro.jpg" alt="Pullman Lima San Isidro, bar del lobby" loading="lazy" width="1200" height="900"></figure>
             <div class="card-body">
               <h4>Pullman Lima San Isidro</h4>
               <p class="card-meta">Accor · Upper Upscale · <span class="nw">2019–2021</span></p>
@@ -456,7 +457,7 @@ strong{font-weight:600;color:var(--navy)}
             </div>
           </article>
           <article class="card reveal">
-            <figure class="card-media"><img src="images/pullman-miraflores.jpg" alt="Pullman Lima Miraflores" loading="lazy"></figure>
+            <figure class="card-media"><img src="images/card-pullman-miraflores.jpg" alt="Pullman Lima Miraflores, lobby" loading="lazy" width="1200" height="654"></figure>
             <div class="card-body">
               <h4>Pullman Lima Miraflores</h4>
               <p class="card-meta">Accor · Upper Upscale · <span class="nw">2018–2021</span></p>
