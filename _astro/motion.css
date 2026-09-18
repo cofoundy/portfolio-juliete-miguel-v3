@@ -1,0 +1,83 @@
+/* ==========================================================================
+   JUMP Arquitectura — sistema de movimiento
+   Un solo momento de entrada (la marca sobre la foto). El resto se revela
+   por material: el texto se enfoca, la foto se descorre.
+   Gate: sin JS (o si falla) todo queda visible y quieto.
+   ========================================================================== */
+:root{
+  --m-expo:cubic-bezier(.16,1,.3,1);
+  --m-quint:cubic-bezier(.22,1,.36,1);
+}
+
+/* 1 · HERO — entrada única */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference){
+  .hero-media img{animation:m-hero-photo 2.8s var(--m-expo) backwards}
+  @keyframes m-hero-photo{from{opacity:0;scale:1.08}}
+  .hero-logo{animation:m-hero-focus 2s var(--m-expo) .35s backwards}
+  @keyframes m-hero-focus{from{opacity:0;transform:translate3d(0,8px,0);filter:blur(12px)}}
+  .hero-descriptor{animation:m-hero-track 1.8s var(--m-expo) 1s backwards}
+  @keyframes m-hero-track{from{opacity:0;transform:translate3d(0,6px,0)}}
+  #top-bar{animation:m-fade 1.2s var(--m-expo) 1.5s backwards}
+  @keyframes m-fade{from{opacity:0}}
+  @media (max-width:767px){ .hero-descriptor{animation-name:m-fade} }
+
+  /* Salida del hero al hacer scroll (motion.js escribe --m-hero-p ∈ [0,1]) */
+  .hero-media img{translate:0 calc(var(--m-hero-p,0) * 18vh)}
+  .hero-lockup{opacity:calc(1 - var(--m-hero-p,0) * 1.6);translate:0 calc(var(--m-hero-p,0) * -6vh)}
+}
+
+/* 2 · REVEALS (html.js-motion + .m-in los pone motion.js) */
+html.js-motion :is(.reveal,.reveal-left,.reveal-right){
+  transition:opacity 1s var(--m-expo),transform 1.3s var(--m-expo),filter 1.1s var(--m-expo);
+  transition-delay:var(--m-delay,0ms);
+}
+html.js-motion :is(.reveal,.reveal-left,.reveal-right):not(.m-in){opacity:0;filter:blur(5px)}
+html.js-motion .reveal:not(.m-in){transform:translate3d(0,20px,0)}
+html.js-motion .reveal-left:not(.m-in){transform:translate3d(-20px,0,0)}
+html.js-motion .reveal-right:not(.m-in){transform:translate3d(20px,0,0)}
+html.js-motion :is(.reveal,.reveal-left,.reveal-right).m-in{opacity:1;transform:none;filter:none}
+html.js-motion .m-settled{transition-delay:0ms !important}
+
+/* Tarjetas: sin blur (mucha superficie); la fotografía se descorre */
+html.js-motion .card.reveal:not(.m-in){filter:none;transform:translate3d(0,24px,0)}
+html.js-motion .card .card-media{transition:clip-path 1.4s var(--m-expo);transition-delay:calc(var(--m-delay,0ms) + 120ms)}
+html.js-motion .card:not(.m-in) .card-media{clip-path:inset(100% 0 0 0)}
+html.js-motion .card.m-in .card-media{clip-path:inset(0)}
+html.js-motion .card.m-settled .card-media{transition-delay:0ms}
+
+/* Filete de categoría: se dibuja desde el título */
+html.js-motion .cat-head .rule{transform-origin:left center;transition:transform 1.6s var(--m-expo) 200ms}
+html.js-motion .cat-head:not(.m-in) .rule{transform:scaleX(0)}
+
+/* Índice Economy: las filas entran en cascada */
+html.js-motion .index .index-row{transition:opacity .8s var(--m-expo),transform 1s var(--m-expo)}
+html.js-motion .index:not(.m-in) .index-row{opacity:0;transform:translate3d(0,8px,0)}
+html.js-motion .index .index-row:nth-child(n){transition-delay:calc(var(--i,0) * 55ms + 120ms)}
+.index-row:nth-child(2){--i:1}.index-row:nth-child(3){--i:2}.index-row:nth-child(4){--i:3}.index-row:nth-child(5){--i:4}
+.index-row:nth-child(6){--i:5}.index-row:nth-child(7){--i:6}.index-row:nth-child(8){--i:7}.index-row:nth-child(9){--i:8}.index-row:nth-child(10){--i:9}
+html.js-motion .index.m-settled .index-row{transition-delay:0ms}
+
+/* Cifras: el filo naranja se traza */
+html.js-motion .figure{position:relative;border-left-color:transparent}
+html.js-motion .figure::before{content:"";position:absolute;left:-1px;top:0;bottom:0;width:1px;background:var(--orange,#ec6607);
+  transform-origin:top;transition:transform 1.4s var(--m-expo)}
+html.js-motion .reveal:not(.m-in) .figure::before{transform:scaleY(0)}
+html.js-motion .figure:nth-child(2)::before{transition-delay:100ms}
+html.js-motion .figure:nth-child(3)::before{transition-delay:200ms}
+html.js-motion .figure:nth-child(4)::before{transition-delay:300ms}
+
+/* Retrato: se descorre */
+html.js-motion .portrait img{transition:clip-path 1.6s var(--m-expo) 120ms}
+html.js-motion .reveal-left:not(.m-in) .portrait img{clip-path:inset(0 0 100% 0)}
+html.js-motion .reveal-left.m-in .portrait img{clip-path:inset(0)}
+
+/* 3 · Píldora: indicador que viaja (lo inyecta motion.js) */
+.m-pill-indicator{position:absolute;z-index:0;top:50%;left:0;height:30px;width:var(--w,0px);translate:var(--x,0px) -50%;
+  border-radius:999px;background:rgba(255,255,255,.1);opacity:0;pointer-events:none;
+  transition:translate .6s var(--m-expo),width .6s var(--m-expo),opacity .4s var(--m-expo)}
+.m-pill-indicator.is-on{opacity:1}
+.m-pill-indicator.no-anim{transition:none}
+
+@media (prefers-reduced-motion: reduce){
+  html.js-motion *{transition-duration:.01ms !important;transition-delay:0ms !important}
+}
